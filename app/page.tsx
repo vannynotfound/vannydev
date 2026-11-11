@@ -1,5 +1,7 @@
 /* eslint-disable @next/next/no-img-element -- The portfolio's lightbox mutates image URLs directly. */
 import Script from "next/script";
+import { ContactForm } from "@/components/contact-form";
+import { ProjectCarousel } from "@/components/project-carousel";
 
 const personSchema = {
   "@context": "https://schema.org",
@@ -641,117 +643,7 @@ export default function Home() {
               </em>
             </h2>
           </div>
-          <div className="projects-grid">
-            <article className="project" data-reveal="scale" data-tilt="">
-              <div className="project__media">
-                <img src="/assets/thumnails/qampus.webp" alt="Qampus queueing system interface" loading="lazy" data-px="0.10" data-px-max="26" />
-              </div>
-              <div className="project__glare" aria-hidden="true"></div>
-              <div className="project__info">
-                {" "}
-                <span className="project__tag">
-                  {"Web App + Mobile App"}
-                </span>
-                {" "}
-                <h3 className="project__title">
-                  {"Qampus"}
-                </h3>
-                <p className="project__desc">
-                  {"A forward-looking web and mobile application built to improve the flexibility and speed of the queuing process in school offices, especially the cashier's office."}
-                </p>
-                <ul className="project__stack">
-                  <li>
-                    {"React"}
-                  </li>
-                </ul>
-                <div className="project__links">
-                  {" "}
-                  <a href="https://qampus-production.up.railway.app/" target="_blank" rel="noopener" className="link-arrow" data-demo="" data-demo-title="Qampus">
-                    {"Live Demo →"}
-                  </a>
-                  {" "}
-                </div>
-              </div>
-            </article>
-            <article className="project" data-reveal="scale" data-tilt="">
-              <div className="project__media">
-                <img src="/assets/thumnails/talktovanny.webp" alt="TalkToVanny messaging platform interface" loading="lazy" data-px="0.10" data-px-max="26" />
-              </div>
-              <div className="project__glare" aria-hidden="true"></div>
-              <div className="project__info">
-                {" "}
-                <span className="project__tag">
-                  {"Web App"}
-                </span>
-                {" "}
-                <h3 className="project__title">
-                  {"TalkToVanny"}
-                </h3>
-                <p className="project__desc">
-                  {"A self-built messaging platform focused on delivering a personalized and engaging communication experience."}
-                </p>
-                <div className="project__links">
-                  {" "}
-                  <a href="https://talktovanny.vercel.app/user/vanny/" target="_blank" rel="noopener" className="link-arrow" data-demo="" data-demo-title="TalkToVanny">
-                    {"Live Demo →"}
-                  </a>
-                  {" "}
-                </div>
-              </div>
-            </article>
-            <article className="project" data-reveal="scale" data-tilt="">
-              <div className="project__media">
-                <img src="/assets/thumnails/mathpad.webp" alt="MathPad learning platform interface" loading="lazy" data-px="0.10" data-px-max="26" />
-              </div>
-              <div className="project__glare" aria-hidden="true"></div>
-              <div className="project__info">
-                {" "}
-                <span className="project__tag">
-                  {"Web App + Mobile App"}
-                </span>
-                {" "}
-                <h3 className="project__title">
-                  {"MathPad"}
-                </h3>
-                <p className="project__desc">
-                  {"An interactive learning platform designed to help students master math through theory, quizzes, and real-time progress tracking."}
-                </p>
-                <div className="project__links">
-                  {" "}
-                  <span className="link-arrow" aria-disabled="true">
-                    {"Coming Soon"}
-                  </span>
-                  {" "}
-                </div>
-              </div>
-            </article>
-            <article className="project" data-reveal="scale" data-tilt="">
-              <div className="project__media">
-                <img src="/assets/thumnails/socialLinks.webp" alt="SocialLinks profile page" loading="lazy" data-px="0.10" data-px-max="26" />
-              </div>
-              <div className="project__glare" aria-hidden="true"></div>
-              <div className="project__info">
-                {" "}
-                <span className="project__tag">
-                  {"Web App"}
-                </span>
-                {" "}
-                <h3 className="project__title">
-                  {"SocialLinks"}
-                </h3>
-                <p className="project__desc">
-                  {"Centralize, customize, and share all of your social profiles through a single sleek page."}
-                </p>
-                <div className="project__links">
-                  {" "}
-                  <a href="https://know-about-vanny.vercel.app/" target="_blank" rel="noopener" className="link-arrow" data-demo="" data-demo-title="SocialLinks">
-                    {"Live Demo →"}
-                  </a>
-                  {" "}
-                </div>
-              </div>
-            </article>
-          </div>
+          <ProjectCarousel />
         </div>
       </section>
       <section className="competitions section" id="competitions">
@@ -1136,64 +1028,7 @@ export default function Home() {
               </button>
               {" "}
             </div>
-            <form className="contact-form" id="contact-form" action="https://api.web3forms.com/submit" method="POST">
-              <input type="hidden" name="access_key" value="90ec3b82-6184-4ba8-b42b-ff852efab3b1" />
-              <input type="hidden" name="subject" value="New message from your portfolio" />
-              <input type="hidden" name="from_name" value="VannyDev Portfolio" />
-              <div className="field">
-                {" "}
-                <label htmlFor="cf-name">
-                  {"Your name"}
-                </label>
-                {" "}
-                <input type="text" id="cf-name" name="name" required minLength={2} maxLength={80} autoComplete="name" placeholder="Juan Dela Cruz" />
-                {" "}
-                <span className="field__error">
-                  {"Please enter your name."}
-                </span>
-                {" "}
-              </div>
-              <div className="field">
-                {" "}
-                <label htmlFor="cf-email">
-                  {"Your email"}
-                </label>
-                {" "}
-                <input type="email" id="cf-email" name="email" required autoComplete="email" placeholder="you@example.com" />
-                {" "}
-                <span className="field__error">
-                  {"Please enter a valid email address."}
-                </span>
-                {" "}
-              </div>
-              <div className="field">
-                {" "}
-                <label htmlFor="cf-message">
-                  {"Message"}
-                </label>
-                {" "}
-                <textarea id="cf-message" name="message" required minLength={10} maxLength={2000} placeholder="Tell me about your project…"></textarea>
-                {" "}
-                <span className="field__error">
-                  {"Please write at least 10 characters."}
-                </span>
-                {" "}
-              </div>
-              <div className="hp" aria-hidden="true">
-                {" "}
-                <label htmlFor="cf-botcheck">
-                  {"Leave this empty"}
-                </label>
-                {" "}
-                <input type="checkbox" id="cf-botcheck" name="botcheck" tabIndex={-1} autoComplete="off" />
-              </div>
-              {" "}
-              <button type="submit" className="btn btn--primary contact-form__submit">
-                {"Send Message"}
-              </button>
-              {" "}
-              <p className="form-status" id="form-status" role="status" aria-live="polite"></p>
-            </form>
+            <ContactForm />
             <div className="footer__socials">
               {" "}
               <a className="footer__social" href="https://github.com/Vanny-Dev" target="_blank" rel="noopener" aria-label="GitHub">
@@ -1250,7 +1085,7 @@ export default function Home() {
                 {"GitHub"}
               </a>
               {" "}
-              <a href="https://www.linkedin.com/in/jovanny-de-leon-a48a492b0/" target="_blank" rel="noopener">
+              <a href="https://www.linkedin.com/in/jovannydeleon/" target="_blank" rel="noopener">
                 {"LinkedIn"}
               </a>
               {" "}
@@ -1324,7 +1159,7 @@ export default function Home() {
           </div>
         </header>
         <div className="demo-modal__stage">
-          <iframe className="demo-modal__frame" title="Live project demo" src="" referrerPolicy="no-referrer-when-downgrade"></iframe>
+          <iframe className="demo-modal__frame" title="Live project demo" src="about:blank" referrerPolicy="no-referrer-when-downgrade"></iframe>
           <div className="demo-modal__loader">
             {" "}
             <span className="demo-modal__spinner" aria-hidden="true"></span>
@@ -1372,7 +1207,7 @@ export default function Home() {
       </button>
       {" "}
       <figure className="lightbox__figure">
-        <img className="lightbox__img" src="" alt="" />
+        <img className="lightbox__img" alt="" />
         <figcaption className="lightbox__caption"></figcaption>
         <p className="lightbox__count" aria-live="polite"></p>
       </figure>

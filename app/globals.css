@@ -1,4 +1,27 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap");
+@import "tailwindcss";
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-md: var(--radius-sm);
+}
 
 /* ═══════════════════════════════════════════════════════════════
    VANNYDEV — PORTFOLIO STYLESHEET
@@ -58,6 +81,24 @@
   --radius:        18px;
   --radius-sm:     10px;
   --radius-pill:   999px;
+
+  /* shadcn/ui theme tokens */
+  --background: var(--bg);
+  --foreground: var(--text);
+  --card: var(--surface);
+  --card-foreground: var(--text);
+  --popover: var(--surface-2);
+  --popover-foreground: var(--text);
+  --primary: var(--accent);
+  --primary-foreground: var(--bg-deep);
+  --secondary: var(--surface-2);
+  --secondary-foreground: var(--text);
+  --muted: var(--surface);
+  --muted-foreground: var(--text-muted);
+  --accent-foreground: var(--bg-deep);
+  --destructive: #ff6b6b;
+  --input: var(--border);
+  --ring: var(--accent);
 
   /* Motion */
   --ease:          cubic-bezier(.4, 0, .2, 1);
@@ -1369,6 +1410,9 @@ body.nav-locked { overflow: hidden; }
     transform .4s var(--ease-out),
     box-shadow .4s var(--ease-out),
     border-color .4s var(--ease-out);
+  gap: 0;
+  padding: 0;
+  color: var(--text);
 }
 
 /* Gradient rim that lights up on hover */
@@ -1502,6 +1546,95 @@ body.nav-locked { overflow: hidden; }
 .project:hover .project__stack li { color: var(--text-soft); border-color: var(--border); }
 
 .project__links { display: flex; flex-wrap: wrap; gap: 1.1rem; margin-top: auto; }
+
+.project-carousel__controls {
+  display: flex;
+  justify-content: center;
+  gap: .75rem;
+  margin-top: 1.25rem;
+}
+
+.project-carousel [data-slot="carousel-content"] { overflow: hidden; }
+.project-carousel [data-slot="carousel-content"] > div {
+  display: flex;
+  margin-left: -1rem;
+}
+.project-carousel [data-slot="carousel-item"] {
+  min-width: 0;
+  flex: 0 0 100%;
+  padding-left: 1rem;
+}
+.project-carousel .project { height: 100%; }
+.project-carousel .project__media { aspect-ratio: 2.2 / 1; }
+.project-carousel .project__info { padding: .9rem; }
+.project-carousel .project__tag { margin-bottom: .45rem; }
+.project-carousel .project__desc { margin-bottom: .65rem; }
+.project-carousel .project__stack { margin-bottom: .75rem; }
+
+@media (min-width: 640px) {
+  .project-carousel [data-slot="carousel-item"] { flex-basis: 50%; }
+}
+
+@media (min-width: 1024px) {
+  .project-carousel [data-slot="carousel-item"] { flex-basis: 33.333333%; }
+}
+
+.project-carousel__control {
+  position: static;
+  inset: auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  width: 44px;
+  min-width: 44px;
+  height: 44px;
+  padding: 0;
+  flex: 0 0 44px;
+  margin: 0;
+  transform: none;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-pill);
+  background: color-mix(in srgb, var(--surface-2) 92%, transparent);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: .78rem;
+  font-weight: 500;
+  letter-spacing: .02em;
+  line-height: 1;
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(12px);
+  transition: color var(--trans), background var(--trans), border-color var(--trans);
+}
+
+.project-carousel__control svg {
+  display: block;
+  width: 1.1rem;
+  height: 1.1rem;
+}
+.project-carousel__control .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.project-carousel__control:hover {
+  border-color: var(--accent);
+  background: var(--accent-faint);
+  color: var(--accent);
+}
+
+
+
+.project-carousel__control:disabled {
+  opacity: .4;
+}
 
 /* ───────────────────────────────────────────────
    10b. COMPETITIONS TIMELINE
@@ -2219,6 +2352,55 @@ body.demo-open .gallery-card { transition: none; }
 .form-status.show { display: flex; }
 .form-status.ok   { color: #7ef0c0; background: rgba(60, 220, 160, .08); border-color: rgba(60, 220, 160, .3); }
 .form-status.bad  { color: #ff9b9b; background: rgba(255, 107, 107, .08); border-color: rgba(255, 107, 107, .3); }
+
+.contact-form--shadcn .field input,
+.contact-form--shadcn .field textarea {
+  border-color: var(--border);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, .03);
+  color: var(--text);
+  font: inherit;
+  font-size: .92rem;
+}
+
+.contact-form--shadcn .field input {
+  min-height: 48px;
+  padding: .75rem .9rem;
+}
+
+.contact-form--shadcn .field textarea {
+  min-height: 140px;
+  padding: .75rem .9rem;
+  resize: vertical;
+}
+
+.contact-form--shadcn .field input::placeholder,
+.contact-form--shadcn .field textarea::placeholder {
+  color: var(--text-muted);
+}
+
+.contact-form--shadcn .field input:focus,
+.contact-form--shadcn .field textarea:focus {
+  border-color: var(--accent);
+  background: var(--accent-faint);
+  box-shadow: 0 0 0 3px rgba(0, 210, 255, .12);
+}
+
+.contact-form--shadcn .contact-form__submit {
+  min-height: 44px;
+  height: auto;
+  padding: .65rem 1.1rem;
+  border-radius: var(--radius-sm);
+  background: var(--accent);
+  color: var(--bg-deep);
+  font-weight: 600;
+  transition: background var(--trans), box-shadow var(--trans);
+}
+
+.contact-form--shadcn .contact-form__submit:hover:not(:disabled) {
+  background: var(--accent-bright);
+  box-shadow: var(--shadow-accent);
+}
 
 .footer__socials { display: flex; gap: .6rem; margin-top: 1.5rem; justify-content: center; }
 .footer__social {

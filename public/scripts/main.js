@@ -462,7 +462,7 @@
       box.setAttribute('aria-hidden', 'true');
       document.body.classList.remove('nav-locked');
       if (lastFocus) lastFocus.focus();
-      setTimeout(() => { if (!box.classList.contains('open')) img.src = ''; }, 400);
+      setTimeout(() => { if (!box.classList.contains('open')) img.removeAttribute('src'); }, 400);
     }
 
     $$('[data-lightbox], [data-gallery]').forEach(el => {
